@@ -16,7 +16,7 @@ import com.revature.charityappcontentms.repository.VideoContentRepository;
 public class VideoContentService {
 	@Autowired
 	VideoContentRepository VideoContentRepositoryObj;
-	@Transactional
+	//@Transactional
     public void addContent(VideoContentDTO videoContent) throws ServiceException {
 		
 		VideoContent video = new VideoContent();
@@ -37,9 +37,7 @@ public class VideoContentService {
 	 public List<VideoContent> contentList() throws ServiceException {
 	        List<VideoContent> videoContent = null;
 	        videoContent = VideoContentRepositoryObj.findAll();
-	        if (  videoContent == null) {
-	            throw new ServiceException("UNABLE TO LIST DONOR DETAILS");
-	        }
+	        
 	        return   videoContent;
 	    }
 }
