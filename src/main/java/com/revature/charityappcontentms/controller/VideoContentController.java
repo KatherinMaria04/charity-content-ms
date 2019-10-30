@@ -46,7 +46,7 @@ public class VideoContentController {
 		            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		        }
 	}
-	@GetMapping("/videos")
+	@GetMapping("")
 	@ApiOperation(value = "  Content List API")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = VideoContent.class),
             @ApiResponse(code = 400, message = "Invalid Credentials", response = Message.class) })
