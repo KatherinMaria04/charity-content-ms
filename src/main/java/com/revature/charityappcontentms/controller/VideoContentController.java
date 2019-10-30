@@ -21,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 @RestController
-@RequestMapping("videocontent")
+@RequestMapping("videos")
 public class VideoContentController {
 
 	@Autowired
@@ -31,8 +31,9 @@ public class VideoContentController {
 	@ApiOperation(value = "  Add video content API")
 	 @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = String.class),
 	            @ApiResponse(code = 400, message = "Invalid Credentials", response = Message.class) })
-	public ResponseEntity<?>addContent(@RequestBody VideoContentDTO videoContenDTO)
+	public ResponseEntity<?> addContent(@RequestBody VideoContentDTO videoContenDTO)
 	  {
+		System.out.println(videoContenDTO);
 		String errorMessage = null;
 		try {
             videoContentService.addContent(videoContenDTO);
@@ -45,7 +46,7 @@ public class VideoContentController {
 		            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		        }
 	}
-	@GetMapping("/contentlist")
+	@GetMapping("/videos")
 	@ApiOperation(value = "  Content List API")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = VideoContent.class),
             @ApiResponse(code = 400, message = "Invalid Credentials", response = Message.class) })
