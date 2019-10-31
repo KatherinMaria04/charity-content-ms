@@ -19,7 +19,7 @@ public class RequestorVideoService {
 	// @Transactional
 	public void requestorVideo(RequestorVideoDTO requestorVideoDTO) throws ServiceException {
 		RequestorVideo requestorVideo = new RequestorVideo();
-		requestorVideo.setRequestorId(requestorVideoDTO.getRequestorId());
+		requestorVideo.setRequestedId(requestorVideoDTO.getRequestedId());
 		requestorVideo.setVideoId(requestorVideoDTO.getVideoId());
 		try {
 

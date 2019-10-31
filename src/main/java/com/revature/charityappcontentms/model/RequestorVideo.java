@@ -19,7 +19,7 @@ public class RequestorVideo {
 	@Column(name = "id")
 	private Integer id;
 	@Column(name = "requestor_id")
-	private Integer requestorId;
+	private Integer requestedId;
 
 	@Column(name = "video_id")
 	private Integer videoId;

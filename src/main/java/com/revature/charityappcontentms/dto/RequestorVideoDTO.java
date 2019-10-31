@@ -9,7 +9,7 @@ public class RequestorVideoDTO {
 	
 	
 		private Integer id;
-		private Integer requestorId;
+		private Integer requestedId;
 		private Integer videoId;
 
 }
