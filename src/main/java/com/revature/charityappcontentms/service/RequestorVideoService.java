@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.revature.charityappcontentms.dto.RequestorVideoDTO;
 import com.revature.charityappcontentms.exception.ServiceException;
 import com.revature.charityappcontentms.model.RequestorVideo;
-
+import com.revature.charityappcontentms.model.VideoContent;
 import com.revature.charityappcontentms.repository.RequestorVideoRepository;
 
 @Service
@@ -20,7 +20,9 @@ public class RequestorVideoService {
 	public void requestorVideo(RequestorVideoDTO requestorVideoDTO) throws ServiceException {
 		RequestorVideo requestorVideo = new RequestorVideo();
 		requestorVideo.setRequestedId(requestorVideoDTO.getRequestedId());
-		requestorVideo.setVideoId(requestorVideoDTO.getVideoId());
+		VideoContent videoContent = new VideoContent();
+		videoContent.setId(requestorVideoDTO.getVideoId());
+		requestorVideo.setVideo(videoContent.getId());
 		try {
 
 			requestorVideoRepository.save(requestorVideo);
@@ -34,10 +36,13 @@ public class RequestorVideoService {
 
 	}
 
-	public List<RequestorVideo> requestorVideoList() throws ServiceException {
-		List<RequestorVideo> requestorVideo = null;
-		requestorVideo = requestorVideoRepository.findAll();
-
-		return requestorVideo;
+	 public List<RequestorVideo> videoList(int requestedId) throws ServiceException {
+	        List<RequestorVideo> list = null;
+	        list = requestorVideoRepository.findByRequestedId(requestedId);
+	        if (list.isEmpty()) {
+	            throw new ServiceException("UNABLE_TO_LIST");
+	        }
+	        return list;
+	    }
 	}
-}
+

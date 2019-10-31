@@ -2,9 +2,12 @@ package com.revature.charityappcontentms.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -21,8 +24,9 @@ public class RequestorVideo {
 	@Column(name = "requestor_id")
 	private Integer requestedId;
 
+	//@OneToMany(fetch = FetchType.EAGER)
 	@Column(name = "video_id")
-	private Integer videoId;
+	private Integer video;
 
 	
 

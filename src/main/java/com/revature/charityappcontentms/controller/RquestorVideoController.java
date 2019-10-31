@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.charityappcontentms.dto.Message;
@@ -51,13 +52,13 @@ public class RquestorVideoController {
 	@ApiOperation(value = "  Requestor video list API")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success", response = VideoContent.class),
             @ApiResponse(code = 400, message = "Invalid Credentials", response = Message.class) })
-	public ResponseEntity<?>requestorVideoList(){
+	public ResponseEntity<?>requestorVideoList(@RequestParam("requestedId") int requestedId){
 		
 		
 		List<RequestorVideo> requestorVideo = null;
 		String errorMessage = null;
 		try {
-			 requestorVideo = requestorVideoService.requestorVideoList();
+			requestorVideo = requestorVideoService.videoList(requestedId);
 		} catch (ServiceException e) {
 			errorMessage = e.getMessage();
 		}
