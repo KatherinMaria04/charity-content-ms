@@ -1,5 +1,6 @@
 package com.revature.charityappcontentms.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -24,7 +25,8 @@ public class VideoContentService {
 		video.setUrl(videoContent.getUrl());
 		video.setActive(true);
     	try{
-    		
+    		video.setCreatedDate(LocalDateTime.now());
+			video.setModifiedDate(LocalDateTime.now());
     		VideoContentRepositoryObj.save(video);
     		
     	}catch (Exception e) {
@@ -41,4 +43,21 @@ public class VideoContentService {
 	        
 	        return   videoContent;
 	    }
+	/* public List<VideoContentDTO> contentList() throws ServiceException {
+		    List<VideoContent> videoContent =  VideoContentRepositoryObj.findAll();
+		    List<VideoContentDTO> listVideoDTO=new ArrayList<VideoContentDTO>();
+		    for(VideoContent videoContentlist:videoContent)
+		    {
+		    	VideoContentDTO dto=new VideoContentDTO();
+		    	dto.setId(videoContentlist.getId());
+		    	dto.setTitle(videoContentlist.getTitle());
+		    	dto.setUrl(videoContentlist.getUrl());
+		    	dto.setCreatedDate(videoContentlist.getCreatedDate());
+		    	dto.setModifiedDate(videoContentlist.getModifiedDate());
+		    	
+		    }
+		    
+		    return   listVideoDTO;
+		}*/
+
 }

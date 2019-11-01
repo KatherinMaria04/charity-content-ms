@@ -1,5 +1,6 @@
 package com.revature.charityappcontentms.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,11 @@ public class RequestorVideoService {
 		requestorVideo.setRequestedId(requestorVideoDTO.getRequestedId());
 		VideoContent videoContent = new VideoContent();
 		videoContent.setId(requestorVideoDTO.getVideoId());
-		requestorVideo.setVideo(videoContent.getId());
+		requestorVideo.setVideo(videoContent);
 		try {
 
+			requestorVideo.setCreatedDate(LocalDateTime.now());
+			requestorVideo.setModifiedDate(LocalDateTime.now());
 			requestorVideoRepository.save(requestorVideo);
 
 		} catch (Exception e) {
@@ -45,4 +48,3 @@ public class RequestorVideoService {
 	        return list;
 	    }
 	}
-

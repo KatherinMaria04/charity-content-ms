@@ -1,5 +1,7 @@
 package com.revature.charityappcontentms.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,5 +28,13 @@ public class VideoContent {
 
 	@Column(name = "active")
 	private boolean active;
+	
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+	
+	@Column(name = "modified_date")
+	private LocalDateTime modifiedDate;
+
+
 
 }
