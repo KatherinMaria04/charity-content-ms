@@ -14,3 +14,4 @@ public interface RequestorVideoRepository  extends JpaRepository<RequestorVideo,
 @Query(" from RequestorVideo where requestedId=?1")
 List<RequestorVideo> findByRequestedId(int requestedId);
 }
+
